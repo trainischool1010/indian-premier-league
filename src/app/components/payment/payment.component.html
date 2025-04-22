@@ -1,0 +1,106 @@
+<div class="payment-container">
+    <h2 class="section-title">Payment Options</h2>
+    <p style="margin-bottom: 20px; color: #555;">All Payment Options</p>
+    
+    <!-- UPI/QR Option -->
+    <div class="payment-option">
+        <div class="option-header">
+            <div class="option-title">UPI/QR</div>
+            <svg class="option-arrow down" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </div>
+        <div class="option-content show" id="upi-content">
+            <div class="cashback-badge">Upto 20% cashback</div>
+            
+            <div class="payment-methods">
+                @if(this.sharedservice.defaultData?.phonepe){
+                    <div class="payment-method" (click)="selectUPI('phonepe')" [ngClass]="selectedPaymentMethod == 'phonepe' ? 'selected' : ''">
+                        <img src="../../../assets/img/phonepay.svg" alt="PhonePe" >
+                        <span>PhonePe</span>
+                    </div>
+                }
+                @if(this.sharedservice.defaultData?.paytm){
+                    <div class="payment-method" (click)="selectUPI('paytm')" [ngClass]="selectedPaymentMethod == 'paytm' ? 'selected' : ''">
+                        <img src="../../../assets/img/paytm_icon.svg" alt="Paytm" >
+                        <span>Paytm</span>
+                    </div>
+                }
+                @if(this.sharedservice.defaultData?.gpay){
+                    <div class="payment-method" (click)="selectUPI('gpay')" [ngClass]="selectedPaymentMethod == 'gpay' ? 'selected' : ''">
+                        <img src="../../../assets/img/gpay_icon.svg" alt="Google Pay" >
+                        <span>Google Pay</span>
+                    </div>
+                }
+                @if(this.sharedservice.defaultData?.upi){
+                    <div class="payment-method" (click)="selectUPI('other')" [ngClass]="selectedPaymentMethod == 'other' ? 'selected' : ''">
+                        <i class="fas fa-mobile-alt" style="margin-right: 8px;"></i>
+                        <span>Other UPI APP</span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <!-- Cards Option -->
+    <div class="payment-option">
+        <div class="option-header">
+            <div class="option-title">Cards</div>
+            <svg class="option-arrow down" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </div>
+        <div class="option-content show" id="cards-content">
+            <div class="checkbox-container">
+                <label for="cards-checkbox">CARD PAYMENT NOT READY NOW!!</label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Wallet Option -->
+    <div class="payment-option">
+        <div class="option-header">
+            <div class="option-title">Wallet</div>
+            <svg class="option-arrow down" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </div>
+        <div class="option-content show" id="wallet-content">
+            <div class="checkbox-container">
+                <label for="wallet-checkbox">Wallet payment not available</label>
+            </div>
+        </div>
+    </div>
+    
+    <!-- New Information Card -->
+    <div class="info-card">
+        <h3>Important Information About Your Tickets</h3>
+        <ul>
+            <li>Your <span class="highlight">e-ticket will be sent to your registered email</span> immediately after successful payment.</li>
+            <li>For IPL matches, you can use the <span class="highlight">e-ticket on your phone</span> for direct stadium entry - no need to print!</li>
+            <li>Alternatively, you can <span class="highlight">print the ticket</span> or show a screenshot at the venue.</li>
+            <li>Tickets are <span class="highlight">non-refundable</span> once purchased.</li>
+            <li>Please arrive at least <span class="highlight">60 minutes before</span> the match starts to avoid last-minute rush.</li>
+            <li>Carry a <span class="highlight">valid photo ID</span> matching the ticket details for verification.</li>
+        </ul>
+        <p style="font-size: 13px; color: #777;">For any issues, contact our 24/7 support at help&#64;bookmyshow.com</p>
+    </div>
+    
+    <div style="margin: 20px 0; text-align: center; color: #666; font-size: 14px;">
+        Account &amp; Terms
+    </div>
+</div>
+
+<!-- -------------------------------  -->
+<!-- -------------------------------  -->
+<!-- -------------------------------  -->
+<!-- -------------------------------  -->
+<!-- -------------------------------  -->
+<!-- -------------------------------  -->
+<div class="payment-footer">
+    <div>
+        <div class="total-amount">₹{{amt}}</div>
+        <div class="view-details">View Details</div>
+    </div>
+    <button class="continue-btn" id="continue-btn" [disabled]="!selectedPaymentMethod" (click)="openURLNewTab()">Pay ₹{{amt}}</button>
+</div>

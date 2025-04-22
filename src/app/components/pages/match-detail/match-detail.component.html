@@ -1,0 +1,194 @@
+@if(matchData){
+    <div class="flex items-center mb-6 mt-2"><a routerLink="/" class="mr-3 flex items-center text-blue-600 hover:text-blue-800 xcolorblk me-3" href="/"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                <path d="m15 18-6-6 6-6"></path>
+            </svg><span class="sr-only">Back</span></a>
+        <h1 class="text-2xl font-bold" style="margin: 0;">Select Your Seats</h1>
+    </div>
+    <div class="container mx-auto px-4 py-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="rounded-lg border-round pad-10 border bg-card text-card-foreground shadow-sm mb-6">
+                <div class="p-6 pt-1 px-3 pb-2">
+                    <div class="flex flex-col items-center gap-1 mb-1">
+                        <div class="flex items-center justify-center gap-4 w-full">
+                            <div class="flex flex-col items-center"><img  loading="lazy"
+                                    width="60" height="60" decoding="async" data-nimg="1"
+                                    class="rounded-full border-2 border-gray-200"
+                                    [src]="matchData?.atImg"
+                                    style="color: transparent;"><span class="mt-1 text-sm font-medium" style="text-align: center !important;">{{matchData?.ht}}</span></div>
+                            <div class="text-xl font-bold">VS</div>
+                            <div class="flex flex-col items-center"><img  loading="lazy" width="60"
+                                    height="60" decoding="async" data-nimg="1" class="rounded-full border-2 border-gray-200"
+                                    [src]="matchData?.htImg"
+                                    style="color: transparent;"><span class="mt-1 text-sm font-medium" style="text-align: center !important;">{{matchData?.at}}</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1 items-center mt-1">
+                            <div class="flex items-center gap-2 top-icons-img mt-2">
+                                <div class="icons-main">
+                                    <span class="me-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"
+                                        class="lucide lucide-calendar h-4 w-4 text-red-600">
+                                        <path d="M8 2v4"></path>
+                                        <path d="M16 2v4"></path>
+                                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                                        <path d="M3 10h18"></path>
+                                        </svg></span>
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 text-red-600 ml-1">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg></span>
+                                </div>
+                                <span class="text-sm">{{matchData?.date}}, {{matchData?.time}}</span>
+                            </div>
+                            <div class="flex items-center gap-2 top-icons-img"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"
+                                    class="lucide lucide-map-pin h-4 w-4 text-red-600">
+                                    <path
+                                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
+                                    </path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg><span class="text-sm text-center">{{matchData?.place}}</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div dir="ltr" data-orientation="horizontal" class="mb-8">
+                <div data-state="active" data-orientation="horizontal" role="tabpanel"
+                    aria-labelledby="radix-«r0»-trigger-map" id="radix-«r0»-content-map" tabindex="0"
+                    class="border-round ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 p-4 border rounded-md mt-2"
+                    style="animation-duration: 0s;">
+                    <div class="mb-4">
+                        <h3 class="text-lg font-semibold mb-2" style="text-align: center;">Select a section from the stadium map</h3>
+                        <p class="text-sm text-gray-600 mb-4" style="text-align: center;">Click on a section to select your preferred seating area</p>
+                        <div class="space-y-3">
+                            <div class="text-center mb-2">
+                                <h3 class="text-base font-semibold text-primary">{{matchData?.ht}} vs {{matchData?.at}}
+                                </h3>
+                                <div>
+                                    <p class="text-sm text-gray-600 font-medium">Venue: {{matchData?.place}}</p>
+                                </div>
+                            </div>
+                            <div class="relative bg-white rounded-xl shadow-lg overflow-hidden"
+                                style="height: 266.4px; min-height: 300px; box-shadow: none !important;">
+                                <div class="relative w-full h-full flex items-center justify-center"><img
+                                        alt="Stadium Map for Eden Gardens, Kolkata"
+                                        class="w-full h-auto max-h-full object-contain cursor-pointer transition-opacity duration-300 opacity-100"
+                                        usemap="#stadium-map" loading="eager" decoding="async" fetchpriority="high"
+                                        [src]="matchData?.stadium"><map
+                                        name="stadium-map"><area shape="poly" coords="0,0,33,0,33,33,0,33" alt="Top Left"
+                                            title="Top Left" class="cursor-pointer"><area shape="poly"
+                                            coords="33,0,66,0,66,33,33,33" alt="Top Middle" title="Top Middle"
+                                            class="cursor-pointer"><area shape="poly" coords="66,0,100,0,100,33,66,33"
+                                            alt="Top Right" title="Top Right" class="cursor-pointer"><area shape="poly"
+                                            coords="0,33,33,33,33,66,0,66" alt="Middle Left" title="Middle Left"
+                                            class="cursor-pointer"><area shape="poly" coords="66,33,100,33,100,66,66,66"
+                                            alt="Middle Right" title="Middle Right" class="cursor-pointer"><area
+                                            shape="poly" coords="0,66,33,66,33,100,0,100" alt="Bottom Left"
+                                            title="Bottom Left" class="cursor-pointer"><area shape="poly"
+                                            coords="33,66,66,66,66,100,33,100" alt="Bottom Middle" title="Bottom Middle"
+                                            class="cursor-pointer"><area shape="poly" coords="66,66,100,66,100,100,66,100"
+                                            alt="Bottom Right" title="Bottom Right" class="cursor-pointer"></map></div>
+                                <div
+                                    class="absolute bottom-2 right-2 bg-white bg-opacity-90 p-2 rounded-lg shadow-sm text-xs">
+                                    <div class="flex items-center gap-1 mb-1">
+                                        <div class="w-3 h-3 bg-pink-500 rounded"></div><span>JIO Pavilion</span>
+                                    </div>
+                                    <div class="flex items-center gap-1 mb-1">
+                                        <div class="w-3 h-3 bg-teal-500 rounded"></div><span>Premium Blocks</span>
+                                    </div>
+                                    <div class="flex items-center gap-1">
+                                        <div class="w-3 h-3 bg-purple-500 rounded"></div><span>Club House</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-state="inactive" data-orientation="horizontal" role="tabpanel"
+                    aria-labelledby="radix-«r0»-trigger-list" hidden="" id="radix-«r0»-content-list" tabindex="0"
+                    class="ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 p-4 border rounded-md mt-2">
+                </div>
+            </div>
+            <div class="rounded-lg border bg-card text-card-foreground shadow-sm mb-8">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-4">Booking Summary</h3>
+                    <div class="mb-2">
+                        <h4 class="text-sm font-medium text-gray-700">Ticket Type</h4>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 mb-4">
+                        @for(item of ticketTypeList; track item){
+                            <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border bg-background hover:text-accent-foreground h-10 px-4 py-2 border-gray-300 hover:bg-gray-100 ticket-type-box" (click)="selectedType = item" [ngClass]="selectedType == item ? 'selected' : ''">{{item.name}}</button>
+                        }
+                    </div>
+                    @if(selectedType.name == "General Stand"){
+                        <div class="bg-blue-50 p-3 rounded-md border border-blue-200 mb-4 text-sm text-gray-700">
+                            <strong>General Stand</strong>
+                            – Affordable seating, usually in the upper stands.
+                        </div>
+                    }
+                    @if(selectedType.name == "Premium Stand"){
+                        <div class="bg-blue-50 p-3 rounded-md border border-blue-200 mb-4 text-sm text-gray-700">
+                            <strong>Premium Stand</strong>
+                            – Better view and closer to the action
+                        </div>
+                    }
+                    @if(selectedType.name == "Pavilion Stand"){
+                        <div class="bg-blue-50 p-3 rounded-md border border-blue-200 mb-4 text-sm text-gray-700">
+                            <strong>Pavilion Stand</strong>
+                            – Located near the player pavilion for a great match experience.
+                        </div>
+                    }
+                    @if(selectedType.name == "VIP Stand"){
+                        <div class="bg-blue-50 p-3 rounded-md border border-blue-200 mb-4 text-sm text-gray-700">
+                            <strong>VIP Stand</strong>
+                            – Premium seating with extra comfort and services.
+                        </div>
+                    }
+                    @if(selectedType.name == "Corporate Box"){
+                        <div class="bg-blue-50 p-3 rounded-md border border-blue-200 mb-4 text-sm text-gray-700">
+                            <strong>Corporate Box</strong>
+                            – Luxury seating for business groups, includes catering services.
+                        </div>
+                    }
+                    @if(selectedType.name == "Hospitality Box"){
+                        <div class="bg-blue-50 p-3 rounded-md border border-blue-200 mb-4 text-sm text-gray-700">
+                            <strong>Hospitality Box</strong>
+                            – Exclusive VIP experience with premium food & beverages.
+                        </div>
+                    }
+                    @if(selectedType.name == "Skybox/Lounge"){
+                        <div class="bg-blue-50 p-3 rounded-md border border-blue-200 mb-4 text-sm text-gray-700">
+                            <strong>Skybox/Lounge</strong>
+                            – High-end hospitality, often with private seating and a lounge experience.
+                        </div>
+                    }
+                    <div class="flex flex-col gap-4">
+                        <div class="flex justify-between items-center"><span class="text-gray-700">Price per
+                                Ticket:</span><span class="font-medium">₹{{selectedType?.amt || 0}}</span></div>
+                        <div class="flex justify-between items-center"><span class="text-gray-700">Quantity:</span>
+                            <div class="flex items-center gap-3">
+                                <button
+                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-8 w-8 p-0"
+                                    (click)="quantity = quantity-1" [disabled]="quantity==1">-</button>
+                                    <span class="w-8 text-center">{{quantity}}</span>
+                                    <button (click)="quantity = quantity+1" [disabled]="quantity==100" 
+                                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-8 w-8 p-0">+</button>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center font-bold text-lg pt-4 border-t">
+                            <span>Total:</span><span class="text-red-600">₹{{quantity*(selectedType?.amt || 0)}}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center w-100"><button (click)="procced()" 
+                    class="w-100 book-proccess-btn inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 h-10 bg-red-600 hover:bg-red-700 text-white px-8 py-2 rounded-md">Proceed
+                    to Booking</button></div>
+        </div>
+    </div>
+}

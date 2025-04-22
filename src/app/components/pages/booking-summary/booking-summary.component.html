@@ -1,0 +1,90 @@
+<main>
+    <div class="max-w-3xl mx-auto">
+        <!-- <div class="flex items-center justify-between mb-4"><button
+                class="flex items-center text-primary hover:text-primary-dark"><svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>Back</button></div> -->
+        <h1 class="text-3xl font-bold text-center mb-6">Complete Your Booking</h1>
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="bg-red-600 p-4 border-b text-white ttl-main">
+                <h2 class="font-semibold ttl-red">Booking Summary</h2>
+            </div>
+            <div class="p-6">
+                <table class="w-full text-sm">
+                    <tbody>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Match:</td>
+                            <td class="py-2 text-right">{{matchData?.ht}} vs {{matchData?.at}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Date &amp; Time:</td>
+                            <td class="py-2 text-right">{{matchData?.date}}, {{matchData?.time}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Venue:</td>
+                            <td class="py-2 text-right">{{matchData?.place}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Ticket Type:</td>
+                            <td class="py-2 text-right font-medium">{{selectedType?.name}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Ticket Price:</td>
+                            <td class="py-2 text-right">₹{{selectedType?.amt}} per ticket</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Quantity:</td>
+                            <td class="py-2 text-right">{{qty}} tickets</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Base Amount:</td>
+                            <td class="py-2 text-right">₹{{(selectedType?.amt || 1)*qty}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">GST (18%):</td>
+                            <td class="py-2 text-right">₹{{gst}}</td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-2 text-gray-600">Service Fee:</td>
+                            <td class="py-2 text-right">₹{{this.sharedservice.defaultData?.serviceCharge}}</td>
+                        </tr>
+                        <tr class="border-t border-gray-200 font-bold">
+                            <td class="py-3">Total Amount:</td>
+                            <td class="py-3 text-right">₹{{total}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <form>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                <div class="bg-red-600 p-4 border-b text-white ttl-main">
+                    <h2 class="font-semibold ttl-red">Customer Information</h2>
+                </div>
+                <div class="p-6 space-y-4">
+                    <div><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label><input
+                            id="name" class="w-full px-4 py-3 border border-gray-300 rounded-md" required="" type="text"
+                            value="" name="name"></div>
+                    <div><label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label><input
+                            id="email" class="w-full px-4 py-3 border border-gray-300 rounded-md" required=""
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+                            title="Please enter a valid email address" type="email" value="" name="email"></div>
+                    <div><label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label><input OnlyNumber [(ngModel)]="phone"  
+                            id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-md" required=""
+                            pattern="[6-9][0-9]{9}" title="Please enter a valid 10-digit mobile number" maxlength="10"
+                            type="tel" value="" name="phone">
+                        <p class="mt-1 text-xs text-gray-500">Enter a 10-digit mobile number without country code</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center"><button (click)="procced()"
+                    class="bg-red-600 btnbtn hover:bg-red-700 text-white font-bold py-3 px-8 rounded-md transition duration-200 w-full sm:w-auto min-h-[44px] ">Pay
+                    with Razorpay ₹{{total}}</button>
+                <p class="mt-4 text-sm text-gray-500">By proceeding, you agree to our Terms &amp; Conditions</p>
+            </div>
+        </form>
+    </div>
+</main>
